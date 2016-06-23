@@ -1,0 +1,10 @@
+a = imread('14x6-6.jpg');
+b = rgb2gray(a);
+figure
+imshow(b)
+c = im2bw(b);
+imshow(c)
+
+
+%I know i need to use 'Boounding Boxes' from regionprops to draw a rectangle around the fixations
+%After I draw the rectangle I need to use imcrop function to extract the image patch

@@ -1,0 +1,34 @@
+a = imread('14x6-99.jpg');
+figure(1),imshow(a)
+
+b = rgb2gray(a);
+figure(2),imshow(b)
+
+c = b;
+
+c (c>20 & c<40) = 255;
+figure(3),imshow(c)
+
+d = c;
+d (d<255) = 0;
+
+figure(4),imshow(d)
+
+
+e = medfilt2(d,[3,3]);
+e = imfill(e,'holes');
+figure(5),imshow(e)
+
+%close all;
+
+e = edge(e,'sobel');
+figure(6),imshow(e)
+
+f = e;
+close all;
+figure(7),imshow(a);
+s = regionprops(f,'Centroid','MajorAxisLength','MinorAxisLength','Area','BoundingBox','PixelIdxList');
+for i=1:numel(s)
+      %rectangle('Position',s(2,1).BoundingBox,'EdgeColor','r','LineWidth',10)
+      rectangle('Position',s(i).BoundingBox,'edgecolor','r','LineWidth',5)
+end
